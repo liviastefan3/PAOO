@@ -1,10 +1,9 @@
 #include "DynamicArray.h"
 #include <iostream>
 
-DynamicArray::DynamicArray(const std::string& name, std::size_t size) {
-    name_ = name;
-    size_ = size;
-    data_ = new int[size_];
+DynamicArray::DynamicArray(const std::string& name, std::size_t size)
+    : name_(name), size_(size), data_(new int[size])
+{
     for (std::size_t i = 0; i < size_; ++i) {
         data_[i] = 0;
     }
