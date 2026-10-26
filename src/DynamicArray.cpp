@@ -13,6 +13,16 @@ DynamicArray::~DynamicArray() {
     std::cout << "[Destructor] '" << name_ << "' elibereaza memoria\n";
     delete[] data_;
 }
+DynamicArray::DynamicArray(const DynamicArray& other)
+    : name_(other.name_ + "_copy"), size_(other.size_), data_(new int[other.size_])
+{
+    for (std::size_t i = 0; i < size_; ++i) {
+        data_[i] = other.data_[i];
+    }
+    std::cout << "[Copy constructor] '" << name_ << "' are heap NOU "
+              << static_cast<const void*>(data_) << " (sursa: "
+              << static_cast<const void*>(other.data_) << ")\n";
+}
 const std::string& DynamicArray::getName() const {
     return name_;
 }
