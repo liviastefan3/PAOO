@@ -9,7 +9,10 @@ DynamicArray::DynamicArray(const std::string& name, std::size_t size)
     }
     std::cout << "[Constructor] '" << name_ << "' size=" << size_ << "\n";
 }
-
+DynamicArray::~DynamicArray() {
+    std::cout << "[Destructor] '" << name_ << "' elibereaza memoria\n";
+    delete[] data_;
+}
 const std::string& DynamicArray::getName() const {
     return name_;
 }

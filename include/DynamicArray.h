@@ -12,7 +12,7 @@ private:
 
 public:
     DynamicArray(const std::string& name, std::size_t size);
-
+    ~DynamicArray();
     const std::string& getName() const;
     std::size_t getSize() const;
     bool set(std::size_t index, int value);

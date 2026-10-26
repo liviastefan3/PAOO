@@ -22,6 +22,14 @@ struct InList {
     WithConst(int id) { id_ = id; }
 };
  */
+void demoDestructor() {
+    std::cout << "\nIntram in scope...\n";
+    {
+        DynamicArray tmp("temporar", 1000000);
+        std::cout << "Obiectul exista, ocupa ~4 MB pe heap\n";
+    }
+    std::cout << "Am iesit din scope\n";
+}
 int main() {
     DynamicArray a("a", 3);
 
@@ -34,5 +42,6 @@ int main() {
     InBody b;
     std::cout << "Initializare in lista:\n";
     InList l;
+    demoDestructor();
     return 0;
 }
