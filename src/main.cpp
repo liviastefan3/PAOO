@@ -2,6 +2,8 @@
 #include "DynamicArray.h"
 #include "BadArray.h"
 #include  <cstring>
+#include <utility>
+#include <vector>
 struct Member {
     Member()      { std::cout << "  [Member] constructor implicit\n"; }
     Member(int v) { std::cout << "  [Member] constructor cu valoarea " << v << "\n"; }
@@ -55,6 +57,25 @@ void demoGoodCopy() {
     original.print();
     copy.print();
 }
+void demoMove() {
+    std::cout << "\n=== Move constructor ===\n";
+    DynamicArray source("source", 5);
+    source.set(0, 7);
+
+    std::cout << "\n-- Copiere (alocare noua + copiere elemente):\n";
+    DynamicArray copied = source;
+
+    std::cout << "\n-- Mutare (se fura pointerul, fara alocare):\n";
+    DynamicArray moved = std::move(source);
+    std::cout << "source dupa mutare: size=" << source.getSize() << "\n";
+    moved.print();
+
+    std::cout << "\n-- std::vector muta obiectele in loc sa le copieze:\n";
+    std::vector<DynamicArray> v;
+    v.reserve(2);
+    v.push_back(DynamicArray("v1", 2));
+    v.push_back(DynamicArray("v2", 2));
+}
 int main(int argc, char *argv[]) {
     DynamicArray a("a", 3);
 
@@ -73,5 +94,6 @@ int main(int argc, char *argv[]) {
     }
     //demoBadCopy();
     demoGoodCopy();
+    demoMove();
     return 0;
 }

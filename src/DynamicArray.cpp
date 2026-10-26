@@ -1,5 +1,6 @@
 #include "DynamicArray.h"
 #include <iostream>
+#include <utility>
 
 DynamicArray::DynamicArray(const std::string& name, std::size_t size)
     : name_(name), size_(size), data_(new int[size])
@@ -7,7 +8,7 @@ DynamicArray::DynamicArray(const std::string& name, std::size_t size)
     for (std::size_t i = 0; i < size_; ++i) {
         data_[i] = 0;
     }
-    std::cout << "[Constructor] '" << name_ << "' size=" << size_ << "\n";
+        std::cout << "[Constructor] '" << name_ << "' size=" << size_ << " heap=" << static_cast<const void*>(data_) << "\n";
 }
 DynamicArray::~DynamicArray() {
     std::cout << "[Destructor] '" << name_ << "' elibereaza memoria\n";
@@ -22,6 +23,14 @@ DynamicArray::DynamicArray(const DynamicArray& other)
     std::cout << "[Copy constructor] '" << name_ << "' are heap NOU "
               << static_cast<const void*>(data_) << " (sursa: "
               << static_cast<const void*>(other.data_) << ")\n";
+}
+DynamicArray::DynamicArray(DynamicArray&& other) noexcept
+    : name_(std::move(other.name_)), size_(other.size_), data_(other.data_)
+{
+    other.data_ = nullptr;
+    other.size_ = 0;
+    std::cout << "[Move constructor] '" << name_ << "' a preluat heap "
+              << static_cast<const void*>(data_) << " (fara alocare noua)\n";
 }
 const std::string& DynamicArray::getName() const {
     return name_;

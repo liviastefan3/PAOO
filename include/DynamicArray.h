@@ -14,6 +14,7 @@ public:
     DynamicArray(const std::string& name, std::size_t size);
     ~DynamicArray();
     DynamicArray(const DynamicArray& other);
+    DynamicArray(DynamicArray&& other) noexcept;
     const std::string& getName() const;
     std::size_t getSize() const;
     bool set(std::size_t index, int value);
