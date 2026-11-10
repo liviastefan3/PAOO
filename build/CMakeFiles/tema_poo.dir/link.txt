@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/tema_poo.dir/src/main.cpp.o CMakeFiles/tema_poo.dir/src/DynamicArray.cpp.o CMakeFiles/tema_poo.dir/src/BadArray.cpp.o -o tema_poo 

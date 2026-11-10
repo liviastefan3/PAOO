@@ -1,0 +1,3 @@
+/home/livia/PAOO/build/CMakeFiles/tema_poo.dir
+/home/livia/PAOO/build/CMakeFiles/edit_cache.dir
+/home/livia/PAOO/build/CMakeFiles/rebuild_cache.dir
